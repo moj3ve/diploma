@@ -1,4 +1,4 @@
 all: build
 
 build:
-	latexmk -pdf main.tex
+	latexmk -pdf src/main.tex
