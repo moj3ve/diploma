@@ -1,7 +1,8 @@
 all: build
 
 build:
-	latexmk -pdf src/main.tex
+# 	latexmk -pdf src/main.tex
+	xelatex src/mainn.tex
 
 clean:
 	rm *.aux \

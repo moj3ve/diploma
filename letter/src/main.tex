@@ -1,32 +1,76 @@
-\documentclass[a4paper,12pt]{article}
-
-\usepackage[english,russian,ukrainian]{babel}
-\usepackage{indentfirst}
-\usepackage{misccorr}
-\usepackage{graphicx}
-\usepackage{amsmath}
+\documentclass[a4paper,14pt]{eskdtext}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
+\usepackage{indentfirst}
+\usepackage{cmap}
+% \usepackage{misccorr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathptmx}
+
+% Шрифты, xelatex
+\usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Times New Roman} % Нормоконтроллеры хотят именно его
+\newfontfamily\cyrillicfont{Times New Roman}
+% \setsansfont{Liberation Sans} % Тут я его не использую, но если пригодится
+% \setmonofont{FreeMono} % Моноширинный шрифт для оформления кода
+
+% Русский язык
+% \usepackage{polyglossia}
+% \setdefaultlanguage{russian}
+\usepackage[english,russian,ukrainian]{babel}
+
+% \author{Yaroslav Nychkalo}
+% \title{Diploma test}
+% \date{Last Monday}
+
 \usepackage{geometry}
-\geometry{left=1cm}
+\geometry{left=2cm}
 \geometry{right=1cm}
 \geometry{top=2cm}
 \geometry{bottom=2cm}
 
-\author{Yaroslav Nychkalo}
-\title{Diploma test}
-\date{Last Monday}
+% \usepackage{geometry}
+%  \geometry{
+%  a4paper,
+%  total={170mm,257mm},
+%  left=20mm,
+%  top=20mm
+% }
+
 
 \begin{document}
 
-\input{chapters/0-title}
+	% ------------------------------------------------------------------------------
+	% Обложка
+	% \include{diploma-title}
 
-\maketitle
+	% ------------------------------------------------------------------------------
+	% Оглавление
+	\tableofcontents
+	% \clearpage
 
-\tableofcontents
+	% ------------------------------------------------------------------------------
+	% Текст работы
+	% \include{diploma-intro}
+	% \include{diploma-ch01}
+	% \include{diploma-ch02}
+	% \include{diploma-ch03}
+	% \include{diploma-conclusion}
+	% \include{diploma-safety}
+	% \include{chapters/0-title}
+	% \include{chapters/1-description}
+	\input{chapters/1-description}
 
-\input{chapters/1-test}
-\input{chapters/2-test}
+	% ------------------------------------------------------------------------------
+	% Список литературы
+	% \phantomsection
+	% \renewcommand{\refname}{Список литературы}
+	% \addcontentsline{toc}{section}{Список литературы}
 
+	% \bibliographystyle{gost780u}
+	% \bibliography{biblio/diploma}
 
 \end{document}
