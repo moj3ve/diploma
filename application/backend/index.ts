@@ -26,13 +26,22 @@ app.use(
 	})
 );
 
+app.use(async (ctx, next) => {
+	try {
+		await next();
+	} catch (err) {
+		ctx.status = err.status || 500;
+		ctx.body = { error: err.message };
+		// ctx.app.emit('error', err, ctx);
+	}
+});
 
 // Apply routes
 app.use(ApiRouter.routes()).use(ApiRouter.allowedMethods());
 
 
 // Run server
-app.listen(8000, () => {
-	console.log("Hello World");
+app.listen(process.env.PORT || 8000, () => {
+	console.log("App is started.");
 });
 

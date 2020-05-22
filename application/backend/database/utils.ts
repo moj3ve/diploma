@@ -1,9 +1,11 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+import { Sequelize, Model, DataTypes } from 'sequelize';
+import { DOCKER, POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASS } from '../config';
 
 const createSequelize = () => {
-	if (process.env.PRODUCTION) {
-		return new Sequelize('database', 'username', 'password', {
-			host: 'database',
+	if (DOCKER) {
+		return new Sequelize(POSTGRES_DB, POSTGRES_USER, POSTGRES_PASS, {
+			host: POSTGRES_HOST,
+			port: POSTGRES_PORT,
 			dialect: 'postgres',
 			logging: false,
 		});
@@ -14,7 +16,3 @@ const createSequelize = () => {
 }
 
 export const sequelize = createSequelize();
-
-export const sync = async () => {
-	return await sequelize.sync();
-}

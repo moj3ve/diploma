@@ -28,11 +28,16 @@ services:
       context: ./backend
       dockerfile: Dockerfile-dev
     environment:
-      DATABASE_CONN_STRING: postgresql://database:database@pgbouncer:6432/database
+      DOCKER: 1
+      POSTGRES_USER: database
+      POSTGRES_PASS: database
+      POSTGRES_HOST: pgbouncer
+      POSTGRES_PORT: 6432
+      POSTGRES_DB: database
     volumes:
-      - ./backend/backend:/app/backend
-    # ports:
-    #   - 89:89
+      - ./backend:/app
+    ports:
+      - 8000:8000
 
   nginx:
     # restart: always
