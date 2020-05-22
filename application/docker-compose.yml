@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  server:
+    build: .
+    restart: always
+    environment:
+      DATABASE_CONN_STRING: postgresql://ubuntu:leadsoft@pgbouncer:6432/ubuntu
+
+  pgbouncer:
+    restart: always
+    image: pgbouncer/pgbouncer
+    environment:
+      PGBOUNCER_LISTEN_PORT: 6432
+      PGBOUNCER_LISTEN_ADDR: pgbouncer
+      PGBOUNCER_MAX_CLIENT_CONN: 1000
+      PGBOUNCER_DEFAULT_POOL_SIZE: 64
+      DATABASES_MAX_DB_CONNECTIONS: 64
+      # DATABASES_HOST: host.docker.internal
+      DATABASES_HOST: 172.17.0.1
+      DATABASES_PORT: 5432
+      DATABASES_DBNAME: ubuntu
+      DATABASES_USER: ubuntu
+      DATABASES_PASSWORD: leadsoft
+
+  nginx:
+    restart: always
+    build: nginx
+    ports:
+      - 89:89

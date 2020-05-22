@@ -1,0 +1,22 @@
+version: '3'
+
+
+services:
+  database:
+    image: postgres:11-alpine
+    ports:
+      - 5555:5432
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: database
+      POSTGRES_PASSWORD: database
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 333:80
+    volumes:
+      - "./pgadmin-servers.json:/pgadmin4/servers.json:ro"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: admin

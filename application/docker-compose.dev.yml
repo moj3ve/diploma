@@ -1,0 +1,58 @@
+version: '3'
+
+
+services:
+  database:
+    image: postgres:11-alpine
+    ports:
+      - 5555:5432
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_USER: database
+      POSTGRES_PASSWORD: database
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 333:80
+    volumes:
+      - "./pgadmin-servers.json:/pgadmin4/servers.json:ro"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+  backend:
+    tty: true
+    # restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-dev
+    environment:
+      DATABASE_CONN_STRING: postgresql://database:database@pgbouncer:6432/database
+    volumes:
+      - ./backend/backend:/app/backend
+    # ports:
+    #   - 89:89
+
+  nginx:
+    # restart: always
+    build: nginx
+    ports:
+      - 89:89
+
+  pgbouncer:
+    # restart: always
+    image: pgbouncer/pgbouncer
+    ports:
+      - 6432:6432
+    environment:
+      PGBOUNCER_LISTEN_PORT: 6432
+      PGBOUNCER_LISTEN_ADDR: pgbouncer
+      PGBOUNCER_MAX_CLIENT_CONN: 1000
+      PGBOUNCER_DEFAULT_POOL_SIZE: 64
+      DATABASES_MAX_DB_CONNECTIONS: 64
+      DATABASES_HOST: database
+      DATABASES_PORT: 5432
+      DATABASES_DBNAME: database
+      DATABASES_USER: database
+      DATABASES_PASSWORD: database
