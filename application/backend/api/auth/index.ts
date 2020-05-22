@@ -17,9 +17,12 @@ authRouter.post('/login', async (ctx, next) => {
 	ctx.assert(student, 404);
 	ctx.assert(student.password === ctx.request.body.password, 404);
 
-	const studentJson = student.toJSON();
+	const token = jwt.sign({
+		id: student.id
+	}, SECRET_KEY);
+	
 	ctx.body = {
-		"token": jwt.sign({ ...studentJson }, SECRET_KEY),
+		"token": token,
 	};
 
 	await next();
