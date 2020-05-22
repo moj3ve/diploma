@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "32c746c4-f57f-43d1-b44b-27653ee33f08",
+		"name": "Diploma",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "24f176db-7497-4c69-bc8e-1c6e59581fb4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/auth/login",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/student/get",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"student",
+								"get"
+							]
+						},
+						"description": "Activate user license"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c9170f75-2c6b-41ae-8107-4f6b12bffe4b",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/api/info",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"api",
+						"info"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkwMTUzOTYwfQ.X9JLukeiYIVlXVjDgOlFGADv4Nlh9MqRSiOtzPVMcT4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "01a8d1e7-684f-4974-aad5-47792939e34e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c7d33d2c-d450-45b5-916c-0721985c4d54",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "bcf7932a-6d68-4ab0-9ef0-47320bf68de2",
+			"key": "base_dev",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"id": "d1d2e4ca-7318-4930-89db-89a489298729",
+			"key": "base_prod",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"id": "10e5d4e5-c228-4852-a37d-c1e6b41ff05b",
+			"key": "base_stash",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,2 +1,3 @@
 export { sequelize } from './utils';
-export { Student, getStudents } from './models/Student';
+
+export { Student, getStudents, createStudent } from './models/Student';

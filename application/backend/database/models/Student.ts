@@ -20,10 +20,10 @@ Student.init(
 
 export const createStudent = async (firstName, lastName, email, phone) => {
 	const student = await Student.create({
-		firstName: "first_name",
-		lastName: "last_name",
-		email: "email",
-		phone: "phone",
+		firstName: firstName,
+		lastName: lastName,
+		email: email,
+		phone: phone,
 	});
 	return student;
 }
@@ -31,8 +31,5 @@ export const createStudent = async (firstName, lastName, email, phone) => {
 
 export const getStudents = async () => {
 	const students = await Student.findAll();
-	// .then(student => {
-	// 	return student.toJSON();
-	// });
 	return await students;
 }
