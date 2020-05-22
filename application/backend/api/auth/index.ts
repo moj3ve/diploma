@@ -11,10 +11,11 @@ const authRouter = new Router({ prefix: "/auth" });
 authRouter.post('/login', async (ctx, next) => {
 	const student = await sequelize.models.student.findOne({
 		where: { email: ctx.request.body.email },
-		attributes: [ 'id' ]
+		attributes: [ 'id', 'password' ]
 	});
 
-	ctx.assert(student, 403);
+	ctx.assert(student, 404);
+	ctx.assert(student.password === ctx.request.body.password, 404);
 
 	const studentJson = student.toJSON();
 	ctx.body = {

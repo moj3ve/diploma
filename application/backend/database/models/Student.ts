@@ -11,6 +11,7 @@ Student.init(
 		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
 		phone: DataTypes.STRING,
+		password: DataTypes.STRING,
 	}, {
 		sequelize,
 		modelName: 'student'
@@ -18,12 +19,13 @@ Student.init(
 );
 
 
-export const createStudent = async (firstName, lastName, email, phone) => {
+export const createStudent = async (firstName, lastName, email, phone, password) => {
 	const student = await Student.create({
 		firstName: firstName,
 		lastName: lastName,
 		email: email,
 		phone: phone,
+		password: password,
 	});
 	return student;
 }
