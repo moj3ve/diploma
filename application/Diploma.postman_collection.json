@@ -26,21 +26,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "login",
-									"value": "admin",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "text"
-								}
-							],
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"slavik.nychkalo@gmail.com\",\n\t\"password\": \"admin\"\n}",
 							"options": {
-								"formdata": {}
+								"formdata": {},
+								"raw": {
+									"language": "json"
+								}
 							}
 						},
 						"url": {
@@ -170,19 +162,19 @@
 	],
 	"variable": [
 		{
-			"id": "bcf7932a-6d68-4ab0-9ef0-47320bf68de2",
+			"id": "20b2647f-7f43-4988-a520-092954f4d0af",
 			"key": "base_dev",
 			"value": "http://localhost:8000",
 			"type": "string"
 		},
 		{
-			"id": "d1d2e4ca-7318-4930-89db-89a489298729",
+			"id": "d5449c00-f5c6-4ae8-a629-d96b69ce179a",
 			"key": "base_prod",
 			"value": "http://localhost:8000",
 			"type": "string"
 		},
 		{
-			"id": "10e5d4e5-c228-4852-a37d-c1e6b41ff05b",
+			"id": "78b63b66-6a75-4785-a271-dee224e488fa",
 			"key": "base_stash",
 			"value": "http://localhost:8000",
 			"type": "string"
