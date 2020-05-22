@@ -4,7 +4,7 @@ import * as json from 'koa-json';
 import * as bodyParser from 'koa-bodyparser';
 import * as jwt from 'koa-jwt';
 
-import { SECRET_KEY } from './config';
+import { SECRET_KEY, PORT } from './config';
 
 import ApiRouter from './api/';
 
@@ -22,7 +22,7 @@ app.use(
 		secret: SECRET_KEY,
 	})
 	.unless({
-		path: [/^\/api\/auth/, "/"]
+		path: [/^\/auth/, "/"]
 	})
 );
 
@@ -44,7 +44,7 @@ app.use(ApiRouter.routes()).use(ApiRouter.allowedMethods());
 
 
 // Run server
-app.listen(process.env.PORT || 8000, () => {
+app.listen(PORT, () => {
 	console.log("App is started.");
 });
 

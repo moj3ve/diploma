@@ -3,7 +3,7 @@ import * as Router from 'koa-router';
 import * as jwt from 'jsonwebtoken';
 import { SECRET_KEY } from '../../config';
 
-import { sequelize, Student } from '../../database/'
+import { sequelize } from '../../database/'
 
 
 const authRouter = new Router({ prefix: "/auth" });

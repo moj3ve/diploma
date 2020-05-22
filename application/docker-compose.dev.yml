@@ -36,14 +36,22 @@ services:
       POSTGRES_DB: database
     volumes:
       - ./backend:/app
-    ports:
-      - 8000:8000
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-dev
+    volumes:
+      - ./frontend:/frontend:rw
+      - frontend-dist:/frontend/dist:rw
 
   nginx:
     # restart: always
     build: nginx
     ports:
-      - 89:89
+      - 8000:8000
+    volumes:
+      - frontend-dist:/home/html/static:ro
 
   pgbouncer:
     # restart: always
@@ -61,3 +69,7 @@ services:
       DATABASES_DBNAME: database
       DATABASES_USER: database
       DATABASES_PASSWORD: database
+
+
+volumes:
+  frontend-dist:

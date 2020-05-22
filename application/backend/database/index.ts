@@ -1,6 +1,9 @@
 import { sequelize } from './utils';
-export { Student, getStudents, createStudent } from './models/Student';
-export { Academic, getAcademics, createAcademic } from './models/Academic';
+export * from './models/Student';
+export * from './models/Group';
+export * from './models/Role';
+export * from './models/StudentGroup';
+export * from './models/Academic';
 
 export const sync = async () => {
 	await sequelize.sync();
