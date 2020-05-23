@@ -10,8 +10,8 @@ function ctrl_c() {
 trap ctrl_c INT
 
 docker_compose down
-docker_compose up --build -d
-echo ">> INITIALIZATION..."
-docker_compose exec backend npx ts-node setup.ts
-echo ">> INITIALIZED!"
-docker_compose logs --follow
+docker_compose up --build # -d
+# echo ">> INITIALIZATION..."
+# docker_compose exec backend npx ts-node setup.ts
+# echo ">> INITIALIZED!"
+# docker_compose logs --follow

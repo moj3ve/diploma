@@ -25,11 +25,16 @@
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.53",
+    "@material-ui/styles": "^4.9.14",
     "@reduxjs/toolkit": "^1.1.0",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
     "babel-loader": "^8.1.0",
     "classnames": "^2.2.6",
+    "css-loader": "^3.5.3",
     "promise": "^8.0.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -39,6 +44,8 @@
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.3",
     "reselect": "^4.0.0",
-    "style-loader": "^1.0.0"
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.0.0",
+    "styles-loader": "^2.0.0"
   }
 }

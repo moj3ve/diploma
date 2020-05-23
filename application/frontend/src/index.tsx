@@ -3,12 +3,22 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux'
 
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+
 import { store } from './store/';
+import { NavBar } from './components/NavBar/';
+import { Navigation } from './components/Navigation/';
+
+import './styles.scss';
 
 
 const App = (props) => {
 	return (
-		<div>Hello React app!</div>
+		<Navigation>
+			Hello
+		</Navigation>
 	);
 }
 

@@ -16,5 +16,5 @@ import {
 	// Create academics
 	await createAcademic("Andrew", "Panandas", "andrew@gmail.com", "0995444743");
 })()
-	.then(res => console.log(res))
+	.then(res => res)
 	.catch(err => console.log(err));
