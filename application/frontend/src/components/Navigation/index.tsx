@@ -24,6 +24,8 @@ import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
+import { Link } from "react-router-dom";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -110,22 +112,22 @@ export function Navigation(props: Props) {
 			</div>
 			<Divider />
 			<List>
-				<ListItem button>
+				<ListItem button component={Link} to="/">
 					<ListItemIcon><DashboardIcon /></ListItemIcon>
 					<ListItemText primary="Голована" />
 				</ListItem>
-				<ListItem button>
+				<ListItem button component={Link} to="/chat">
 					<ListItemIcon><ChatIcon /></ListItemIcon>
 					<ListItemText primary="Чати" />
 				</ListItem>
-				<ListItem button>
+				<ListItem button component={Link} to="/schedule">
 					<ListItemIcon><ScheduleIcon /></ListItemIcon>
 					<ListItemText primary="Розклад занять" />
 				</ListItem>
 			</List>
 			<Divider />
 			<List>
-				<ListItem button>
+				<ListItem button component={Link} to="/settings">
 					<ListItemIcon><SettingsIcon /></ListItemIcon>
 					<ListItemText primary="Налаштування" />
 				</ListItem>

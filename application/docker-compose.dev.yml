@@ -37,13 +37,13 @@ services:
     volumes:
       - ./backend:/app
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile-dev
-    volumes:
-      - ./frontend:/frontend:rw
-      - frontend-dist:/frontend/dist:rw
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile-dev
+  #   volumes:
+  #     - ./frontend:/frontend:rw
+  #     - frontend-dist:/frontend/dist:rw
 
   nginx:
     # restart: always
@@ -52,7 +52,8 @@ services:
       - 8000:8000
     volumes:
       - ./nginx/html/index.html:/home/html/index.html:ro
-      - frontend-dist:/home/html/static:ro
+      # - frontend-dist:/home/html/static:ro
+      - ./frontend/dist:/home/html/static:ro
 
   pgbouncer:
     # restart: always
@@ -72,5 +73,5 @@ services:
       DATABASES_PASSWORD: database
 
 
-volumes:
-  frontend-dist:
+# volumes:
+#   frontend-dist:

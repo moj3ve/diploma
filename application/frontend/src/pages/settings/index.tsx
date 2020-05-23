@@ -2,14 +2,14 @@ import * as React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 
-const Dashboard = (props) => {
+const Settings = (props) => {
 	return (
 		<React.Fragment>
 			<Typography variant="h2">
-				Dashboard
+				Settings
 			</Typography>
 			<Typography paragraph>
-				Hello Slavik, it is Dashboard. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+				Hello Slavik, it is Settings. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
 				ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
 				facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
 				gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
@@ -25,4 +25,4 @@ const Dashboard = (props) => {
 };
 
 
-export default Dashboard;
+export default Settings;
