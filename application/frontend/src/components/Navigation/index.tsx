@@ -11,6 +11,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ChatIcon from '@material-ui/icons/Chat';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -45,10 +49,28 @@ const useStyles = makeStyles((theme: Theme) =>
 				display: 'none',
 			},
 		},
+		appBarTitle: {
+			[theme.breakpoints.up('sm')]: {
+				display: 'none',
+			},
+		},
 		// necessary for content to be below app bar
-		toolbar: theme.mixins.toolbar,
+		toolbar: {
+			...theme.mixins.toolbar,
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			fontWeight: 900,
+		},
 		drawerPaper: {
-			width: drawerWidth,
+			width: '70%',
+			minWidth: drawerWidth,
+			maxWidth: '100%',
+			[theme.breakpoints.up('sm')]: {
+				width: drawerWidth,
+				minWidth: 'auto',
+				maxWidth: 'auto',
+			},
 		},
 		content: {
 			flexGrow: 1,
@@ -56,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		grow: {
 			flexGrow: 1,
-		}
+		},
 	}),
 );
 
@@ -81,29 +103,38 @@ export function Navigation(props: Props) {
 
 	const drawer = (
 		<div>
-			<div className={classes.toolbar} />
+			<div className={classes.toolbar}>
+				<Typography variant="h6">
+					Studpost
+				</Typography>
+			</div>
 			<Divider />
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
+				<ListItem button>
+					<ListItemIcon><DashboardIcon /></ListItemIcon>
+					<ListItemText primary="Голована" />
+				</ListItem>
+				<ListItem button>
+					<ListItemIcon><ChatIcon /></ListItemIcon>
+					<ListItemText primary="Чати" />
+				</ListItem>
+				<ListItem button>
+					<ListItemIcon><ScheduleIcon /></ListItemIcon>
+					<ListItemText primary="Розклад занять" />
+				</ListItem>
 			</List>
 			<Divider />
 			<List>
-				{['All mail', 'Trash', 'Spam'].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
+				<ListItem button>
+					<ListItemIcon><SettingsIcon /></ListItemIcon>
+					<ListItemText primary="Налаштування" />
+				</ListItem>
 			</List>
 		</div>
 	);
 
-	const container = window !== undefined ? () => window().document.body : undefined;
+	// const container = window !== undefined ? () => window().document.body : undefined;
+	const container = undefined;
 
 	const isMenuOpen = Boolean(anchorEl);
 
@@ -126,8 +157,8 @@ export function Navigation(props: Props) {
 			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
-			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
+			<MenuItem onClick={handleMenuClose}>Профіль</MenuItem>
+			<MenuItem onClick={handleMenuClose}>Вихід</MenuItem>
 		</Menu>
 	);
 
@@ -145,10 +176,11 @@ export function Navigation(props: Props) {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h6" noWrap>
+					<Typography variant="h6" noWrap className={classes.appBarTitle}>
 						Studpost
 					</Typography>
 					<div className={classes.grow} />
+					<strong>Slavik Nychkalo</strong>
 					<IconButton
 						edge="end"
 						aria-label="account of current user"
@@ -163,7 +195,6 @@ export function Navigation(props: Props) {
 				</Toolbar>
 			</AppBar>
 			<nav className={classes.drawer} aria-label="mailbox folders">
-				{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
 				<Hidden smUp implementation="css">
 					<Drawer
 						container={container}
@@ -173,9 +204,6 @@ export function Navigation(props: Props) {
 						onClose={handleDrawerToggle}
 						classes={{
 							paper: classes.drawerPaper,
-						}}
-						ModalProps={{
-							keepMounted: true, // Better open performance on mobile.
 						}}
 					>
 						{drawer}
