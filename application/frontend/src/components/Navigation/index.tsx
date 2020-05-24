@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			},
 		},
 		appBar: {
+			// boxShadow: `0px -40px 0px 0px ${theme.palette.primary.main}`,
 			[theme.breakpoints.up('sm')]: {
 				width: `calc(100% - ${drawerWidth}px)`,
 				marginLeft: drawerWidth,
@@ -106,6 +107,7 @@ interface Props {
 	 * You won't need it on your project.
 	 */
 	window?: () => Window;
+	children: JSX.Element;
 }
 
 export function Navigation(props: Props) {
