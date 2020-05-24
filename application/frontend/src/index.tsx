@@ -20,6 +20,8 @@ import { Navigation } from './components/Navigation/';
 import Dashboard from './pages/dashboard/';
 import Chat from './pages/chat/';
 import Schedule from './pages/schedule/';
+import Students from './pages/students/';
+import Academics from './pages/academics/';
 import Settings from './pages/settings/';
 
 import './styles.scss';
@@ -32,6 +34,8 @@ const App = (props) => {
 				<Route exact path="/" component={Dashboard} />
 				<Route exact path="/chat" component={Chat} />
 				<Route exact path="/schedule" component={Schedule} />
+				<Route exact path="/students" component={Students} />
+				<Route exact path="/academics" component={Academics} />
 				<Route exact path="/settings" component={Settings} />
 				<Route path="*">
 					<Typography variant="h2">404, PAGE NOT FOUND</Typography>

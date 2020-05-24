@@ -16,6 +16,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ChatIcon from '@material-ui/icons/Chat';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import MenuIcon from '@material-ui/icons/Menu';
+import PeopleIcon from '@material-ui/icons/People';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
@@ -24,7 +26,7 @@ import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -84,6 +86,13 @@ const useStyles = makeStyles((theme: Theme) =>
 	}),
 );
 
+const ListItemNavLink = (Props) => (
+	<ListItem button component={NavLink} exact to={Props.to} activeClassName="Mui-selected">
+		<ListItemIcon><Props.Icon /></ListItemIcon>
+		<ListItemText primary={Props.title} />
+	</ListItem>
+);
+
 interface Props {
 	/**
 	 * Injected by the documentation to work in an iframe.
@@ -112,25 +121,15 @@ export function Navigation(props: Props) {
 			</div>
 			<Divider />
 			<List>
-				<ListItem button component={Link} to="/">
-					<ListItemIcon><DashboardIcon /></ListItemIcon>
-					<ListItemText primary="Голована" />
-				</ListItem>
-				<ListItem button component={Link} to="/chat">
-					<ListItemIcon><ChatIcon /></ListItemIcon>
-					<ListItemText primary="Чати" />
-				</ListItem>
-				<ListItem button component={Link} to="/schedule">
-					<ListItemIcon><ScheduleIcon /></ListItemIcon>
-					<ListItemText primary="Розклад занять" />
-				</ListItem>
+				<ListItemNavLink to="/" title="Головна" Icon={DashboardIcon} />
+				<ListItemNavLink to="/chat" title="Чати" Icon={ChatIcon} />
+				<ListItemNavLink to="/schedule" title="Розклад занять" Icon={ScheduleIcon} />
+				<ListItemNavLink to="/students" title="Студенти" Icon={PeopleIcon} />
+				<ListItemNavLink to="/academics" title="Викладачі" Icon={PeopleAltIcon} />
 			</List>
 			<Divider />
 			<List>
-				<ListItem button component={Link} to="/settings">
-					<ListItemIcon><SettingsIcon /></ListItemIcon>
-					<ListItemText primary="Налаштування" />
-				</ListItem>
+				<ListItemNavLink to="/settings" title="Налаштування" Icon={SettingsIcon} />
 			</List>
 		</div>
 	);
