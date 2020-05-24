@@ -87,7 +87,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const ListItemNavLink = (Props) => (
-	<ListItem button component={NavLink} exact to={Props.to} activeClassName="Mui-selected">
+	<ListItem
+		button
+		onClick={Props.onClick}
+		component={NavLink}
+		activeClassName="Mui-selected"
+		to={Props.to}
+		exact
+	>
 		<ListItemIcon><Props.Icon /></ListItemIcon>
 		<ListItemText primary={Props.title} />
 	</ListItem>
@@ -121,15 +128,15 @@ export function Navigation(props: Props) {
 			</div>
 			<Divider />
 			<List>
-				<ListItemNavLink to="/" title="Головна" Icon={DashboardIcon} />
-				<ListItemNavLink to="/chat" title="Чати" Icon={ChatIcon} />
-				<ListItemNavLink to="/schedule" title="Розклад занять" Icon={ScheduleIcon} />
-				<ListItemNavLink to="/students" title="Студенти" Icon={PeopleIcon} />
-				<ListItemNavLink to="/academics" title="Викладачі" Icon={PeopleAltIcon} />
+				<ListItemNavLink onClick={handleDrawerToggle} to="/" title="Головна" Icon={DashboardIcon} />
+				<ListItemNavLink onClick={handleDrawerToggle} to="/chat" title="Чати" Icon={ChatIcon} />
+				<ListItemNavLink onClick={handleDrawerToggle} to="/schedule" title="Розклад занять" Icon={ScheduleIcon} />
+				<ListItemNavLink onClick={handleDrawerToggle} to="/students" title="Студенти" Icon={PeopleIcon} />
+				<ListItemNavLink onClick={handleDrawerToggle} to="/academics" title="Викладачі" Icon={PeopleAltIcon} />
 			</List>
 			<Divider />
 			<List>
-				<ListItemNavLink to="/settings" title="Налаштування" Icon={SettingsIcon} />
+				<ListItemNavLink onClick={handleDrawerToggle} to="/settings" title="Налаштування" Icon={SettingsIcon} />
 			</List>
 		</div>
 	);
