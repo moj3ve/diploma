@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		title: {
 			marginBottom: '0.4em',
+
+			[theme.breakpoints.down('xs')]: {
+				fontSize: '3.4em',
+			}
 		},
 	}),
 );
