@@ -117,9 +117,13 @@ export function Navigation(props: Props) {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 
-	const handleDrawerToggle = () => {
+	const handleDrawerToggle = React.useCallback(() => {
 		setMobileOpen(!mobileOpen);
-	};
+	}, [mobileOpen]);
+
+	const handleDrawerClose = React.useCallback(() => {
+		setMobileOpen(false);
+	}, []);
 
 	const drawer = (
 		<div>
@@ -130,15 +134,15 @@ export function Navigation(props: Props) {
 			</div>
 			<Divider />
 			<List>
-				<ListItemNavLink onClick={handleDrawerToggle} to="/" title="Головна" Icon={DashboardIcon} />
-				<ListItemNavLink onClick={handleDrawerToggle} to="/chat" title="Чати" Icon={ChatIcon} />
-				<ListItemNavLink onClick={handleDrawerToggle} to="/schedule" title="Розклад занять" Icon={ScheduleIcon} />
-				<ListItemNavLink onClick={handleDrawerToggle} to="/students" title="Студенти" Icon={PeopleIcon} />
-				<ListItemNavLink onClick={handleDrawerToggle} to="/academics" title="Викладачі" Icon={PeopleAltIcon} />
+				<ListItemNavLink onClick={handleDrawerClose} to="/" title="Головна" Icon={DashboardIcon} />
+				<ListItemNavLink onClick={handleDrawerClose} to="/chat" title="Чати" Icon={ChatIcon} />
+				<ListItemNavLink onClick={handleDrawerClose} to="/schedule" title="Розклад занять" Icon={ScheduleIcon} />
+				<ListItemNavLink onClick={handleDrawerClose} to="/students" title="Студенти" Icon={PeopleIcon} />
+				<ListItemNavLink onClick={handleDrawerClose} to="/academics" title="Викладачі" Icon={PeopleAltIcon} />
 			</List>
 			<Divider />
 			<List>
-				<ListItemNavLink onClick={handleDrawerToggle} to="/settings" title="Налаштування" Icon={SettingsIcon} />
+				<ListItemNavLink onClick={handleDrawerClose} to="/settings" title="Налаштування" Icon={SettingsIcon} />
 			</List>
 		</div>
 	);
