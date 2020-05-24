@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 import { ScheduleSubject, IScheduleSubject } from './Subject';
@@ -38,6 +39,8 @@ export interface IScheduleDayProps {
 }
 
 
+const today = new Date();
+
 export const ScheduleDay = (props: IScheduleDayProps) => {
 	const classes = useStyles();
 
@@ -46,7 +49,9 @@ export const ScheduleDay = (props: IScheduleDayProps) => {
 			className={classes.root}
 			subheader={
 				<ListSubheader className={classes.subheader} component="div">
-					{format(props.schedule.date, "dd.MM.yyyy")}
+					<Typography variant="inherit" color={props.schedule.date >= today ? "primary" : "secondary"}>
+						{format(props.schedule.date, "dd.MM.yyyy")}
+					</Typography>
 				</ListSubheader>
 			}
 		>
