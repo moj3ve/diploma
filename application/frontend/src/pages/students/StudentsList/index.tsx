@@ -3,8 +3,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import { createStudent } from './helpers';
-import { IStudent } from './Student';
-import { Students } from './Students';
+import { Students, IStudent } from './Students';
 
 
 const students: IStudent[] = [
