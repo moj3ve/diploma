@@ -14,7 +14,7 @@ const schedule: IScheduleDay[] = [
 ];
 
 export const ScheduleList = (props) => (
-	<Grid container spacing={2} justify="center">
+	<Grid container spacing={2} alignItems="center" direction="column">
 		{schedule.map(day => (
 			<Grid key={day.id} item xs={12} md={10} lg={6} xl={5}>
 				<ScheduleDay schedule={day} />

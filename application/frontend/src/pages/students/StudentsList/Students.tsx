@@ -10,6 +10,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
+import Hidden from '@material-ui/core/Hidden';
 
 import CallIcon from '@material-ui/icons/Call';
 import EmailIcon from '@material-ui/icons/Email';
@@ -65,17 +66,19 @@ export const Student = (props: StudentProps) => {
 					</React.Fragment>
 				}
 			/>
-			<ListItemSecondaryAction>
-				<IconButton href={`tel:${props.student.phone}`} edge="end" aria-label="call">
-					<CallIcon />
-				</IconButton>
-				<IconButton edge="end" aria-label="chat">
-					<ChatIcon />
-				</IconButton>
-				<IconButton href={`mailto:${props.student.email}`} edge="end" aria-label="email">
-					<EmailIcon />
-				</IconButton>
-			</ListItemSecondaryAction>
+			<Hidden xsDown implementation="css">
+				<ListItemSecondaryAction>
+					<IconButton href={`tel:${props.student.phone}`} edge="end" aria-label="call">
+						<CallIcon />
+					</IconButton>
+					<IconButton edge="end" aria-label="chat">
+						<ChatIcon />
+					</IconButton>
+					<IconButton href={`mailto:${props.student.email}`} edge="end" aria-label="email">
+						<EmailIcon />
+					</IconButton>
+				</ListItemSecondaryAction>
+			</Hidden>
 		</ListItem>
 	);
 }
