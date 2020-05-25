@@ -6,7 +6,9 @@ import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -27,6 +29,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 
 import { NavLink } from "react-router-dom";
+import { ChatsLink } from './ChatsLink';
 
 const drawerWidth = 240;
 
@@ -80,12 +83,17 @@ const useStyles = makeStyles((theme: Theme) =>
 		content: {
 			flexGrow: 1,
 			padding: theme.spacing(3),
+			// paddingTop: theme.spacing(1),
+			// [theme.breakpoints.up('sm')]: {
+			// 	paddingTop: 0,
+			// },
 		},
 		grow: {
 			flexGrow: 1,
 		},
 	}),
 );
+
 
 const ListItemNavLink = (Props) => (
 	<ListItem
@@ -102,16 +110,10 @@ const ListItemNavLink = (Props) => (
 );
 
 interface Props {
-	/**
-	 * Injected by the documentation to work in an iframe.
-	 * You won't need it on your project.
-	 */
-	window?: () => Window;
 	children: JSX.Element;
 }
 
 export function Navigation(props: Props) {
-	const { window } = props;
 	const classes = useStyles();
 	const theme = useTheme();
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -135,7 +137,8 @@ export function Navigation(props: Props) {
 			<Divider />
 			<List>
 				<ListItemNavLink onClick={handleDrawerClose} to="/" title="Головна" Icon={DashboardIcon} />
-				<ListItemNavLink onClick={handleDrawerClose} to="/chat" title="Чати" Icon={ChatIcon} />
+				{/*<ListItemNavLink onClick={handleDrawerClose} to="/chat" title="Чати" Icon={ChatIcon} />*/}
+				<ChatsLink onClick={handleDrawerClose} />
 				<ListItemNavLink onClick={handleDrawerClose} to="/schedule" title="Розклад занять" Icon={ScheduleIcon} />
 				<ListItemNavLink onClick={handleDrawerClose} to="/students" title="Студенти" Icon={PeopleIcon} />
 				<ListItemNavLink onClick={handleDrawerClose} to="/academics" title="Викладачі" Icon={PeopleAltIcon} />
@@ -146,9 +149,6 @@ export function Navigation(props: Props) {
 			</List>
 		</div>
 	);
-
-	// const container = window !== undefined ? () => window().document.body : undefined;
-	const container = undefined;
 
 	const isMenuOpen = Boolean(anchorEl);
 
@@ -211,7 +211,6 @@ export function Navigation(props: Props) {
 			<nav className={classes.drawer} aria-label="mailbox folders">
 				<Hidden smUp implementation="css">
 					<Drawer
-						container={container}
 						variant="temporary"
 						anchor={theme.direction === 'rtl' ? 'right' : 'left'}
 						open={mobileOpen}
