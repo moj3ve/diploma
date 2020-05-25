@@ -12,12 +12,12 @@ const day = createDay("05/24/2020");
 const Dashboard = (props) => {
 	return (
 		<React.Fragment>
-			<Typography variant="h6" gutterBottom>
-				Розклад найближчих занять
+			<Typography variant="h4" gutterBottom>
+				Доброго дня!
 			</Typography>
 			<Grid container spacing={2}>
 				<Grid item xs={12} lg={6}>
-					<ScheduleDay schedule={day} />
+					<ScheduleDay title="Найближчі заняття: 12.04.2020" schedule={day} />
 				</Grid>
 			</Grid>
 		</React.Fragment>

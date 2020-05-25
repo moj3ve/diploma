@@ -36,6 +36,7 @@ export interface IScheduleDay {
 
 export interface IScheduleDayProps {
 	schedule: IScheduleDay;
+	title?: string;
 }
 
 
@@ -50,7 +51,7 @@ export const ScheduleDay = (props: IScheduleDayProps) => {
 			subheader={
 				<ListSubheader className={classes.subheader} component="div">
 					<Typography variant="inherit" color={props.schedule.date >= today ? "primary" : "secondary"}>
-						{format(props.schedule.date, "dd.MM.yyyy")}
+						{props.title || format(props.schedule.date, "dd.MM.yyyy")}
 					</Typography>
 				</ListSubheader>
 			}
