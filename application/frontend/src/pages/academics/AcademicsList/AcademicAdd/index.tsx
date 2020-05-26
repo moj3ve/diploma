@@ -105,5 +105,10 @@ const AcademicAddModalForm = withFormModal<AcademicAddModalProps>(
 
 export const AcademicAddModal = connect(
 	undefined,
-	{ addAcademic: console.log }
+	{
+		addAcademic: academic => dispatch => {
+			console.log("ADD", academic);
+			return academic;
+		}
+	}
 )(AcademicAddModalForm);

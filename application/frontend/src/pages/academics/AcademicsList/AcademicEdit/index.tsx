@@ -62,8 +62,6 @@ export const AcademicEditForm = (props) => {
 
 
 interface AcademicEditModalProps {
-	VendorInfoBlock?: JSX.ElementClass;
-	StopBlock?: JSX.ElementClass;
 	academic: any;
 	updateAcademic: (academic: any) => any;
 	handleClose: () => any;
@@ -94,7 +92,7 @@ const AcademicEditModalForm = withFormModal<AcademicEditModalProps>(
 		},
 
 		onAsyncSubmit(values) {
-			return new Promise(res => res({success: true}));
+			return new Promise(res => res({item: "HELLO"}));
 		},
 
 		onSuccess(props, data) {
@@ -106,5 +104,10 @@ const AcademicEditModalForm = withFormModal<AcademicEditModalProps>(
 
 export const AcademicEditModal = connect(
 	undefined,
-	{ updateAcademic: console.log }
+	{
+		updateAcademic: academic => dispatch => {
+			console.log("UPDATE", academic);
+			return academic;
+		}
+	}
 )(AcademicEditModalForm);
