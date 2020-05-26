@@ -11,6 +11,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import Hidden from '@material-ui/core/Hidden';
+import Grid from '@material-ui/core/Grid';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 import CallIcon from '@material-ui/icons/Call';
 import EmailIcon from '@material-ui/icons/Email';
@@ -96,7 +98,10 @@ export const Academics = (props: IAcademicsProps) => {
 			className={classes.root}
 			subheader={
 				<ListSubheader className={classes.subheader} component="div">
-					Викладачі
+					<Grid container justify="space-between" alignContent="center">
+						<span>Викладачі</span>
+						<IconButton><PersonAddIcon /></IconButton>
+					</Grid>
 				</ListSubheader>
 			}
 		>
