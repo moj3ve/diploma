@@ -131,7 +131,7 @@ export function Navigation(props: Props) {
 		<div>
 			<div className={classes.toolbar}>
 				<Typography variant="h6">
-					Studpost
+					Студпост
 				</Typography>
 			</div>
 			<Divider />
@@ -191,7 +191,7 @@ export function Navigation(props: Props) {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap className={classes.appBarTitle}>
-						Studpost
+						Студпост
 					</Typography>
 					<div className={classes.grow} />
 					<strong>Slavik Nychkalo</strong>

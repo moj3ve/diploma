@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import { MessagesList } from './Messages';
+import { MessageField } from './MessageField';
 
 
 const Chat = (props) => {
@@ -11,15 +13,12 @@ const Chat = (props) => {
 	console.log(chatId);
 	return (
 		<React.Fragment>
-			<Typography variant="h4">{chatId}</Typography>
 			<Grid container>
-				<Grid item container xs={12} sm={4} component={Paper} square>
-					<Paper square>
-						Hello
-					</Paper>
+				<Grid item container xs={12} component={Paper} square elevation={0}>
+					<MessageField />
 				</Grid>
-				<Grid item container xs={12} sm={8} component={Paper} square>
-					Messages
+				<Grid item container xs={12} component={Paper} square elevation={0}>
+					<MessagesList />
 				</Grid>
 			</Grid>
 		</React.Fragment>
