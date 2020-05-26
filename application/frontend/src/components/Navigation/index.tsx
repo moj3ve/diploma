@@ -194,7 +194,7 @@ export function Navigation(props: Props) {
 						Студпост
 					</Typography>
 					<div className={classes.grow} />
-					<strong>Slavik Nychkalo</strong>
+					<strong>Ярослав Ничкало</strong>
 					<IconButton
 						edge="end"
 						aria-label="account of current user"

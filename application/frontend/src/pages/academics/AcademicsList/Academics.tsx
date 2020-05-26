@@ -21,6 +21,27 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 import { format } from 'date-fns';
 
+import { AcademicEditModal } from './AcademicEdit/';
+import { AcademicAddModal } from './AcademicAdd/';
+// import { ButtonModal } from 'studpost/component/ButtonModal';
+import { ButtonModal } from '../../../components/ButtonModal';
+import { useModalArray } from '../../../components/Modal/';
+
+
+export const AcademicAddButtonModal = (props) => {
+	const [ isModalOpened, handleModalOpen, handleModalClose ] = useModalArray();
+
+	return (
+		<React.Fragment>
+			<IconButton color="primary" component="span" onClick={handleModalOpen as any}>
+				<PersonAddIcon />
+			</IconButton>
+			<AcademicAddModal isOpened={isModalOpened} handleClose={handleModalClose} />
+		</React.Fragment>
+	);
+}
+
+
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -53,35 +74,40 @@ export interface AcademicProps {
 
 
 export const Academic = (props: AcademicProps) => {
+	const [ isOpened, handleOpen, handleClose ] = useModalArray();
+
 	return (
-		<ListItem alignItems="flex-start" button>
-			<ListItemAvatar>
-				<Avatar>SN</Avatar>
-			</ListItemAvatar>
-			<ListItemText
-				primary={`${props.academic.firstName} ${props.academic.lastName}`}
-				secondary={
-					<React.Fragment>
-						<Typography component="span" variant="body2" color="textPrimary">{props.academic.email}</Typography>
-						<br />
-						<span>{props.academic.phone}</span>
-					</React.Fragment>
-				}
-			/>
-			<Hidden xsDown implementation="css">
-				<ListItemSecondaryAction>
-					<IconButton href={`tel:${props.academic.phone}`} edge="end" aria-label="call">
-						<CallIcon />
-					</IconButton>
-					<IconButton edge="end" aria-label="chat">
-						<ChatIcon />
-					</IconButton>
-					<IconButton href={`mailto:${props.academic.email}`} edge="end" aria-label="email">
-						<EmailIcon />
-					</IconButton>
-				</ListItemSecondaryAction>
-			</Hidden>
-		</ListItem>
+		<React.Fragment>
+			<AcademicEditModal academic={props.academic} isOpened={isOpened} handleClose={handleClose} />
+			<ListItem alignItems="flex-start" button onClick={handleOpen as any}>
+				<ListItemAvatar>
+					<Avatar>SN</Avatar>
+				</ListItemAvatar>
+				<ListItemText
+					primary={`${props.academic.firstName} ${props.academic.lastName}`}
+					secondary={
+						<React.Fragment>
+							<Typography component="span" variant="body2" color="textPrimary">{props.academic.email}</Typography>
+							<br />
+							<span>{props.academic.phone}</span>
+						</React.Fragment>
+					}
+				/>
+				<Hidden xsDown implementation="css">
+					<ListItemSecondaryAction>
+						<IconButton href={`tel:${props.academic.phone}`} edge="end" aria-label="call">
+							<CallIcon />
+						</IconButton>
+						<IconButton edge="end" aria-label="chat">
+							<ChatIcon />
+						</IconButton>
+						<IconButton href={`mailto:${props.academic.email}`} edge="end" aria-label="email">
+							<EmailIcon />
+						</IconButton>
+					</ListItemSecondaryAction>
+				</Hidden>
+			</ListItem>
+		</React.Fragment>
 	);
 }
 
@@ -100,7 +126,8 @@ export const Academics = (props: IAcademicsProps) => {
 				<ListSubheader className={classes.subheader} component="div">
 					<Grid container justify="space-between" alignContent="center">
 						<span>Викладачі</span>
-						<IconButton><PersonAddIcon /></IconButton>
+						<AcademicAddButtonModal />
+						{/*<IconButton><PersonAddIcon /></IconButton>*/}
 					</Grid>
 				</ListSubheader>
 			}

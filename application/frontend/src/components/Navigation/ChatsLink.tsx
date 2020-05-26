@@ -41,10 +41,18 @@ export const ChatsLink = (props) => {
 	const classes = useStylesChatLink();
 	const [ open, setOpen ] = React.useState(false);
 
+	const toggleChatsOpen = React.useCallback(() => {
+		setOpen(!open)
+	}, [open])
+
 	return (
 		<React.Fragment>
-			<ListItem button onClick={() => setOpen(!open)}>
-				<ListItemIcon><ChatIcon /></ListItemIcon>
+			<ListItem button onClick={toggleChatsOpen}>
+				<ListItemIcon>
+					<Badge badgeContent={0} color="secondary">
+						<ChatIcon />
+					</Badge>
+				</ListItemIcon>
 				<ListItemText primary="Чати" />
 			</ListItem>
 			<Collapse in={open} timeout="auto" unmountOnExit>
