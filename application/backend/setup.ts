@@ -1,8 +1,8 @@
 import { sync, drop } from './database/';
 
 import {
-	createStudent,
-	createAcademic,
+	Student,
+	Academic,
 } from './database/';
 
 
@@ -11,10 +11,10 @@ import {
 	await sync();
 
 	// Create students
-	await createStudent("Slavik", "Nychkalo", "slavik.nychkalo@gmail.com", "0970067238", "admin");
+	await Student.create("Ярослав", "Володимирович", "Ничкало", "slavik.nychkalo@gmail.com", "0970067238", "test");
 
 	// Create academics
-	await createAcademic("Andrew", "Panandas", "andrew@gmail.com", "0995444743");
+	await Academic.create("Андрій", "Сергійович", "Парацитамол", "andrew@gmail.com", "0995444743");
 })()
 	.then(res => res)
 	.catch(err => console.log(err));

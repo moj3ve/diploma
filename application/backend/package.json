@@ -7,16 +7,18 @@
     "start": "ts-node index.ts",
     "dev": "nodemon --exec ts-node index.ts",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch --onlyChanged"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.14",
     "@material-ui/icons": "^4.9.1",
+    "@types/bcrypt": "^3.0.0",
     "@types/jest": "^25.2.3",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-json": "^2.0.18",
     "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.4.1",
+    "bcrypt": "^4.0.1",
     "express": "^4.17.1",
     "jest": "^26.0.1",
     "koa": "^2.12.0",

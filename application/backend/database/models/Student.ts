@@ -8,6 +8,7 @@ export class Student extends Model {}
 Student.init(
 	{
 		firstName: DataTypes.STRING,
+		middleName: DataTypes.STRING,
 		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
 		phone: DataTypes.STRING,
@@ -19,9 +20,10 @@ Student.init(
 );
 
 
-export const createStudent = async (firstName, lastName, email, phone, password) => {
+export const create = async (firstName, middleName, lastName, email, phone, password) => {
 	const student = await Student.create({
 		firstName: firstName,
+		middleName: middleName,
 		lastName: lastName,
 		email: email,
 		phone: phone,
@@ -31,7 +33,7 @@ export const createStudent = async (firstName, lastName, email, phone, password)
 }
 
 
-export const getStudents = async () => {
+export const getAll = async () => {
 	const students = await Student.findAll();
 	return await students;
 }

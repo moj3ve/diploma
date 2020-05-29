@@ -3,6 +3,7 @@ import { DOCKER, POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, POSTGRES_USER, POSTG
 
 const createSequelize = () => {
 	if (DOCKER) {
+		console.log("DOCKER");
 		return new Sequelize(POSTGRES_DB, POSTGRES_USER, POSTGRES_PASS, {
 			host: POSTGRES_HOST,
 			port: POSTGRES_PORT,

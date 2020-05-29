@@ -8,6 +8,7 @@ export class Academic extends Model {}
 Academic.init(
 	{
 		firstName: DataTypes.STRING,
+		middleName: DataTypes.STRING,
 		lastName: DataTypes.STRING,
 		email: DataTypes.STRING,
 		phone: DataTypes.STRING,
@@ -18,9 +19,10 @@ Academic.init(
 );
 
 
-export const createAcademic = async (firstName, lastName, email, phone) => {
+export const create = async (firstName, middleName, lastName, email, phone) => {
 	const academic = await Academic.create({
 		firstName: firstName,
+		middleName: middleName,
 		lastName: lastName,
 		email: email,
 		phone: phone,
@@ -29,7 +31,7 @@ export const createAcademic = async (firstName, lastName, email, phone) => {
 }
 
 
-export const getAcademics = async () => {
+export const getAll = async () => {
 	const academics = await Academic.findAll();
 	return await academics;
 }

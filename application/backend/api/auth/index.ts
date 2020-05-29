@@ -5,21 +5,27 @@ import { SECRET_KEY } from '../../config';
 
 import { sequelize } from '../../database/'
 
+import { generateTokenForStudent } from '../../services/auth/';
+
 
 const authRouter = new Router({ prefix: "/auth" });
 
 authRouter.post('/login', async (ctx, next) => {
-	const student = await sequelize.models.student.findOne({
-		where: { email: ctx.request.body.email },
-		attributes: [ 'id', 'password' ]
-	});
+	const token = generateTokenForStudent(ctx.request.body.email, ctx.request.body.password);
 
-	ctx.assert(student, 404);
-	ctx.assert(student.password === ctx.request.body.password, 404);
+	// const student = await sequelize.models.student.findOne({
+	// 	where: { email: ctx.request.body.email },
+	// 	attributes: [ 'id', 'password' ]
+	// });
 
-	const token = jwt.sign({
-		id: student.id
-	}, SECRET_KEY);
+	// ctx.assert(student, 404);
+	// ctx.assert(student.password === ctx.request.body.password, 404);
+
+	// const token = jwt.sign({
+	// 	id: student.id
+	// }, SECRET_KEY);
+
+	ctx.assert(token, 404);
 	
 	ctx.body = {
 		"token": token,
