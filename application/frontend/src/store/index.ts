@@ -2,9 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
+export const initialState = {
+	user: null,
+}
 
-const reducer = (state, action) => {
-	console.log("Hello state 2");
+const reducer = (state = initialState, action) => {
+	// console.log("Hello state 2");
 	return state;
 }
 

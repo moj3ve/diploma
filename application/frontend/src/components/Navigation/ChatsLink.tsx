@@ -23,7 +23,7 @@ const useStylesChatLink = makeStyles((theme: Theme) =>
 	}),
 );
 
-const ChatLink = (props: { onClick: any; chatId: string; title: string; className: string; }) => (
+export const ChatLink = (props: { chatId: string; title: string; className?: string; onClick?: any; }) => (
 	<ListItem
 		button
 		onClick={props.onClick}
